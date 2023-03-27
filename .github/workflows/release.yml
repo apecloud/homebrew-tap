@@ -9,11 +9,32 @@ on:
         required: true
         default: ''
 
+env:
+  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+
 jobs:
   update-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: update kbcli version
+        id: update-kbcli-version
         run: |
-          bash .github/utils/update_version.sh "$version"
+          bash .github/utils/update_version.sh "${{ inputs.VERSION }}"
+
+          FILE_CHANGES=`git diff --name-only ${{ github.sha }}`
+          if [[ ! -z "$FILE_CHANGES" ]]; then
+            echo $FILE_CHANGES
+            git config --local user.name "$GITHUB_ACTOR"
+            git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            git commit -a -m "chore: auto update kbcli version"
+          fi
+          echo file_changes=$FILE_CHANGES >> $GITHUB_OUTPUT
+
+      - name: Push kbcli version changes
+        uses: ad-m/github-push-action@master
+        if: ${{ steps.update-kbcli-version.outputs.file_changes }}
+        with:
+          github_token: ${{ env.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
