@@ -49,7 +49,6 @@ if [[ "$VERSION" == *.*.* && "$VERSION" != *.*.*-* ]]; then
     if [[ ! -f $formula_version_file ]]; then
         cp -r $formula_file $formula_version_file
         git add $formula_version_file
-        ${VERSION/./}
         update_file "class Kbcli < Formula" "class KbcliAT${VERSION//./} < Formula" $formula_version_file
     fi
 fi
