@@ -1,0 +1,19 @@
+name: RELEASE-HOMEBREW-TAG
+
+on:
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        description: "The release version of kbcli"
+        type: string
+        required: true
+        default: ''
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: update kbcli version
+        run: |
+          bash .github/utils/update_version.sh "$version"
