@@ -43,3 +43,12 @@ update_formula_version() {
 }
 
 update_formula_version
+
+if [[ "$VERSION" == *.*.* && "$VERSION" != *.*.*-* ]]; then
+    formula_version_file=$formula_file"@"$VERSION
+    if [[ ! -f $formula_version_file ]]; then
+        cp -r $formula_file $formula_version_file
+        git add $formula_version_file
+    fi
+fi
+
