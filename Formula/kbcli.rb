@@ -5,7 +5,7 @@ class Kbcli < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.5.1/kbcli-darwin-amd64-v0.5.1.tar.gz"
-    sha256 "45af9894bd27fb08a4e4827e72390dceed3cec940a38e27746426ad1fac53c3b"
+    sha256 "7ec213ebb4ca892f14cc39ca9e3a03d31f32a65a6573e6f77d69a4d0cb4951a0"
   end
 
   if OS.mac? && Hardware::CPU.arm?
