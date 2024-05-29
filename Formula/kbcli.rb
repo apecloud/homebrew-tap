@@ -15,17 +15,17 @@ class Kbcli < Formula
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.8.3/kbcli-linux-amd64-v0.8.3.tar.gz"
-    sha256 "9d8c3df48132a3d141570667539b102d31829f5d803c01e39c39a4cc4fd666eb"
+    sha256 "e1c09b72d71b341f2a275105431ba689e23b76e32343136234ce2b424cc1ecac"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.8.3/kbcli-linux-amd64-v0.8.3.tar.gz"
-    sha256 "9d8c3df48132a3d141570667539b102d31829f5d803c01e39c39a4cc4fd666eb"
+    sha256 "e1c09b72d71b341f2a275105431ba689e23b76e32343136234ce2b424cc1ecac"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.8.3/kbcli-linux-arm64-v0.8.3.tar.gz"
-    sha256 "9d8c3df48132a3d141570667539b102d31829f5d803c01e39c39a4cc4fd666eb"
+    sha256 "e1c09b72d71b341f2a275105431ba689e23b76e32343136234ce2b424cc1ecac"
   end
 
   conflicts_with "kbcli"
