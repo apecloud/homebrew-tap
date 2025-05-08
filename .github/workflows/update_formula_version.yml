@@ -1,10 +1,10 @@
-name: Release Homebrew Tap
+name: Update Formula Version
 
 on:
   workflow_dispatch:
     inputs:
       VERSION:
-        description: "The release version of kbcli"
+        description: "The update version of kbcli"
         type: string
         required: true
         default: ''
@@ -12,7 +12,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-run-name: release homebrew tap version:${{ inputs.VERSION }}
+run-name: update formula version:${{ inputs.VERSION }}
 
 
 jobs:
@@ -23,7 +23,10 @@ jobs:
       - name: update kbcli version
         id: update-kbcli-version
         run: |
-          bash .github/utils/update_version.sh "${{ inputs.VERSION }}"
+          UPDATE_VERSION="${{ inputs.VERSION }}"
+          for update_version in $(echo "${UPDATE_VERSION}" | sed 's/|/ /g'); do
+              bash .github/utils/update_formula_version.sh "${update_version}"
+          done
 
           FILE_CHANGES=`git diff --name-only ${{ github.sha }}`
           if [[ ! -z "$FILE_CHANGES" ]]; then
