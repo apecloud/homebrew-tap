@@ -18,14 +18,9 @@ class KbcliAT071 < Formula
     sha256 "f9134b853f37b0662de42acd7812c5e1d16fdd019f8f625d834e15bedf826bfc"
   end
 
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.7.1/kbcli-linux-amd64-v0.7.1.tar.gz"
-    sha256 "f9134b853f37b0662de42acd7812c5e1d16fdd019f8f625d834e15bedf826bfc"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+  if OS.linux? && Hardware::CPU.arm?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.7.1/kbcli-linux-arm64-v0.7.1.tar.gz"
-    sha256 "f9134b853f37b0662de42acd7812c5e1d16fdd019f8f625d834e15bedf826bfc"
+    sha256 "7bee4b1e84b83853298c7e82f8af41cd902b29424003532f55aa555520909618"
   end
 
   conflicts_with "kbcli"

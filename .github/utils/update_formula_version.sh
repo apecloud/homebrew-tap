@@ -54,7 +54,6 @@ update_formula_version() {
             url=$( echo "$readline" | awk '{print $2}' | sed 's/\"//g' )
             echo "get $url sha256..."
             url_sha256=$( curl -sL $url | shasum -a 256 | cut -d " " -f 1 )
-            echo "url_sha256:"$url_sha256
         elif [[ "$readline" == *"sha256"* ]];then
             sha256=$( echo "$readline" | awk '{print $2}' | sed 's/\"//g' )
             echo "update sha256:"$sha256" to url_sha256:"$url_sha256
