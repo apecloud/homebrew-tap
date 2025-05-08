@@ -15,12 +15,12 @@ class KbcliAT052 < Formula
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.5.2/kbcli-linux-amd64-v0.5.2.tar.gz"
-    sha256 "9491d4737000e80bcbdd7a39e9dc13c2178ff865beff7d800d6159bfc395e8fa"
+    sha256 "64b92974d6e4ff34e172fd451914b4b484f5cf6c16d0eae26e25a5d3235eaf50"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.5.2/kbcli-linux-amd64-v0.5.2.tar.gz"
-    sha256 "9491d4737000e80bcbdd7a39e9dc13c2178ff865beff7d800d6159bfc395e8fa"
+    sha256 "64b92974d6e4ff34e172fd451914b4b484f5cf6c16d0eae26e25a5d3235eaf50"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?

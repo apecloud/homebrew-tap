@@ -23,10 +23,6 @@ update_file() {
 }
 
 update_file_with_line_num() {
-    echo $1
-    echo $2
-    echo $3
-    echo $4
     case $OS in
         darwin)
             sed -i '' "$4s/$1/$2/g" $3
