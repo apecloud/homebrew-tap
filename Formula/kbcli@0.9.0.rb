@@ -5,27 +5,27 @@ class KbcliAT090 < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.9.0/kbcli-darwin-amd64-v0.9.0.tar.gz"
-    sha256 "c1d70fa2bbc6a8e22fa187ce44d8997604d78c6450e6d452fabd974f0f2399f8"
+    sha256 "8dfcc4b193f36e8bf95546aa1fc3f05b931a8699d217134dc8029cc2addcdd79"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.9.0/kbcli-darwin-arm64-v0.9.0.tar.gz"
-    sha256 "ad111f9ff7280e836c52e0ca6ab7b41a767a64e80accc0254b5bd3fcfb81372c"
+    sha256 "13888682c19321396e92e301bfec78944cb885aa35d23027ca099defe4d4a808"
   end
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.9.0/kbcli-linux-amd64-v0.9.0.tar.gz"
-    sha256 "b3536b6778f10d3324b0604fb4bf9ed096738d9eebc20b6b1f6892d6075686eb"
+    sha256 "f0ea899287b59900a3aff8efd94498d7a62f7a8051bfbcd371cf936e39965489"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.9.0/kbcli-linux-amd64-v0.9.0.tar.gz"
-    sha256 "b3536b6778f10d3324b0604fb4bf9ed096738d9eebc20b6b1f6892d6075686eb"
+    sha256 "f0ea899287b59900a3aff8efd94498d7a62f7a8051bfbcd371cf936e39965489"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
     url "https://jihulab.com/api/v4/projects/85948/packages/generic/kubeblocks/v0.9.0/kbcli-linux-arm64-v0.9.0.tar.gz"
-    sha256 "b3536b6778f10d3324b0604fb4bf9ed096738d9eebc20b6b1f6892d6075686eb"
+    sha256 "a6ab1cd99663bd5eb430a8d754c0a857250eea2b9470831ee3da19ffd3965c69"
   end
 
   conflicts_with "kbcli"
