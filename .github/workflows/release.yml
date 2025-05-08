@@ -1,4 +1,4 @@
-name: RELEASE-HOMEBREW-TAG
+name: Release Homebrew Tap
 
 on:
   workflow_dispatch:
@@ -12,12 +12,14 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+run-name: release homebrew tap version:${{ inputs.VERSION }}
+
 
 jobs:
   update-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: update kbcli version
         id: update-kbcli-version
         run: |
@@ -28,7 +30,7 @@ jobs:
             echo $FILE_CHANGES
             git config --local user.name "$GITHUB_ACTOR"
             git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-            git commit -a -m "chore: auto update kbcli version"
+            git commit -a -m "chore: auto update kbcli version ${{ inputs.VERSION }}"
           fi
           echo file_changes=$FILE_CHANGES >> $GITHUB_OUTPUT
 
