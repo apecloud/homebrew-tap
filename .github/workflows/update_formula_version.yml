@@ -1,4 +1,4 @@
-name: Update Formula Version
+name: Update Formula Kbcli Version
 
 on:
   workflow_dispatch:

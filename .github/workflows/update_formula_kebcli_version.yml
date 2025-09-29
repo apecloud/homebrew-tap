@@ -1,10 +1,10 @@
-name: Release Kbcli Homebrew Tap
+name: Update Formula Kbecli Version
 
 on:
   workflow_dispatch:
     inputs:
       VERSION:
-        description: "The release version of kbcli"
+        description: "The update version of kbecli"
         type: string
         required: true
         default: ''
@@ -12,7 +12,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-run-name: release homebrew tap version:${{ inputs.VERSION }}
+run-name: update formula version:${{ inputs.VERSION }}
 
 
 jobs:
@@ -20,23 +20,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: update kbcli version
-        id: update-kbcli-version
+      - name: update kbecli version
+        id: update-kbecli-version
         run: |
-          bash .github/utils/update_version.sh "${{ inputs.VERSION }}"
+          UPDATE_VERSION="${{ inputs.VERSION }}"
+          for update_version in $(echo "${UPDATE_VERSION}" | sed 's/|/ /g'); do
+              bash .github/utils/update_formula_version.sh "${update_version}"
+          done
 
           FILE_CHANGES=`git diff --name-only ${{ github.sha }}`
           if [[ ! -z "$FILE_CHANGES" ]]; then
             echo $FILE_CHANGES
             git config --local user.name "$GITHUB_ACTOR"
             git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-            git commit -a -m "chore: auto update kbcli version ${{ inputs.VERSION }}"
+            git commit -a -m "chore: auto update kbecli version ${{ inputs.VERSION }}"
           fi
           echo file_changes=$FILE_CHANGES >> $GITHUB_OUTPUT
 
-      - name: Push kbcli version changes
+      - name: Push kbecli version changes
         uses: ad-m/github-push-action@master
-        if: ${{ steps.update-kbcli-version.outputs.file_changes }}
+        if: ${{ steps.update-kbecli-version.outputs.file_changes }}
         with:
           github_token: ${{ env.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
