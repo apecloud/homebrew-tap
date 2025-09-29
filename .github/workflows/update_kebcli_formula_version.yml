@@ -1,4 +1,4 @@
-name: Update Formula Kbecli Version
+name: Update Kbecli Formula Version
 
 on:
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
         run: |
           UPDATE_VERSION="${{ inputs.VERSION }}"
           for update_version in $(echo "${UPDATE_VERSION}" | sed 's/|/ /g'); do
-              bash .github/utils/update_formula_version.sh "${update_version}"
+              bash .github/utils/update_kebcli_formula_version.sh "${update_version}"
           done
 
           FILE_CHANGES=`git diff --name-only ${{ github.sha }}`
