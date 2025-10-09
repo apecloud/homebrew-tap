@@ -1,4 +1,4 @@
-class Kbecli < Formula
+class KbecliAT101 < Formula
   desc "Command-line for KubeBlocks Enterprise"
   homepage "https://kubeblocks.io/"
   version "1.0.1"
